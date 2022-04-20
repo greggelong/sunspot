@@ -1,17 +1,23 @@
 class Spot{
-    constructor(){
-        this.x = random(width);
-        this.y = random(height);
+    constructor(x,y){
+        
+        this.x = x;
+        this.y = y;
         this.d = 20;
-        this.speed = 1;
+        this.speedx = 2;
+        this.speedy = 1;
+        print(this.x,this.y)
     }
 
     move(){
-        this.x+=random(-this.speed,this.speed);
-        this.y+=random(-this.speed,this.speed);
+        this.x+=random(-this.speedx,this.speedx);
+        this.y+=random(-this.speedy,this.speedy);
         
     }
     display(){
-        ellipse(this.x,this.y,this.d,this.d)
+        
+        //fill(0,0,255)
+        fill(0)
+        ellipse(this.x,this.y,this.d,this.d);
     }
 }
