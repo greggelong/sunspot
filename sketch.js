@@ -1,6 +1,15 @@
 let spots=[];
-let ssn = 132
+let ssn = 2;
+let sundata;
 
+function preload(){
+  let link = "https://data.smartidf.services/api/records/1.0/search/?dataset=daily-sunspot-number&q=&sort=-column_4&facet=year_month_day&facet=column_5&facet=column_6&facet=column_7&refine.year_month_day=1968-04-30"
+  sundata = loadJSON(link, showData,);
+}
+function showData(){
+  ssn = sundata.records[0].fields.column_5
+  print(ssn) // puls out just the sunspot number from the date
+}
 function setup() {
   createCanvas(800, 800);
   background(0)
@@ -32,7 +41,7 @@ function makeSunSpots(num){
   for(let i =0;i<num;i++){
     // pick a random angle and radius
     let theta = random(360);
-    let r = random(width/2);
+    let r = random((width/2)-10);
 
     let x = r*cos(theta);
     let y = r*sin(theta);
